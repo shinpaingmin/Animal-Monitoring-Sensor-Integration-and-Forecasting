@@ -1,0 +1,89 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.venv/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+.ipynb_checkpoints/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Node / frontend
+node_modules/
+frontend/dist/
+.vite/
+.turbo/
+.eslintcache
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Tests and coverage
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Logs, runtime files and local databases
+*.log
+logs/
+tmp/
+temp/
+*.db
+*.sqlite
+*.sqlite3
+
+# Local data, media and model artefacts
+storage/images/*
+storage/videos/*
+!storage/images/.gitkeep
+!storage/videos/.gitkeep
+ai/models/*.pt
+ai/models/*.pth
+ai/models/*.ckpt
+ai/models/*.onnx
+ai/models/*.engine
+ai/models/*.tflite
+mlruns/
+mlartifacts/
+.dvc/cache/
+
+# Local Docker overrides
+docker-compose.override.yml
+compose.override.yml

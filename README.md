@@ -97,6 +97,7 @@ The following stack is the agreed target architecture for Habitat. Technologies 
 | Technology | Purpose |
 |---|---|
 | React | Build the web application and interactive dashboards for residents, officers and supervisors |
+| TypeScript | Add static typing to frontend components, services and shared data contracts |
 | Tailwind CSS | Create responsive and consistent UI designs |
 | Figma / Figma Make | UI/UX design and prototyping |
 | Recharts | Display animal statistics, case trends and analytics |
@@ -708,6 +709,10 @@ animal-monitoring-system/
 ├── frontend/
 │   ├── public/
 │   ├── src/
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   ├── styles.css
+│   │   ├── vite-env.d.ts
 │   │   ├── components/
 │   │   ├── pages/
 │   │   ├── layouts/
@@ -715,8 +720,11 @@ animal-monitoring-system/
 │   │   ├── services/
 │   │   ├── types/
 │   │   └── utils/
+│   ├── index.html
+│   ├── package-lock.json
 │   ├── package.json
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 │
 ├── backend/
 │   ├── app/
@@ -759,6 +767,8 @@ animal-monitoring-system/
 │   └── release/
 │
 ├── docker/
+│   ├── backend.Dockerfile
+│   └── frontend.Dockerfile
 ├── tests/
 │   ├── integration/
 │   └── e2e/
@@ -789,6 +799,18 @@ cd animal-monitoring-system
 cp .env.example .env
 docker compose up --build
 ```
+
+The starter implementation includes a typed React complaint form and dashboard, FastAPI mock services for the four shared module contracts, an SSE connection endpoint, and Docker services for PostgreSQL/PostGIS, Redis and MinIO. Until database repositories and the YOLO worker are connected, application records are stored in memory and reset when the backend restarts. `POST /api/v1/detect` is deliberately labelled as a mock result with zero confidence and always requires human review.
+
+Useful starter endpoints:
+
+- API health: `GET /api/v1/health`
+- Cases: `GET|POST /api/v1/cases`
+- Mock detection: `POST /api/v1/detect`
+- Detections: `GET /api/v1/detections`
+- Zones: `GET|POST /api/v1/zones`
+- Actions: `GET|POST /api/v1/actions`
+- Server-sent events: `GET /api/v1/events`
 
 Example local development addresses (confirm the actual ports in `docker-compose.yml`):
 
